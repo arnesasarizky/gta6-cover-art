@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header class="brand">
+      <h1>Neon Coast <span>Cover Studio</span></h1>
+      <p>Your photo, a caption, and a Vice City sunset — a poster to share.</p>
+    </header>
+
+    <div class="group">
+      <h2>1 · Photo</h2>
+      <label class="file-btn">Choose a photo
+        <input id="photo" type="file" accept="image/*">
+      </label>
+      <p class="hint">Click a panel first to fill just that panel. Drop a photo anywhere on the preview to fill the panel under it.</p>
+      <div class="row">
+        <button id="fill-all" type="button">Fill all panels</button>
+        <button id="use-samples" type="button">Use sample photos</button>
+      </div>
+      <p class="hint">Selected panel: <strong id="panel-label">1</strong></p>
+      <label>Zoom
+        <input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+      <div class="row">
+        <button id="reset-crop" type="button">Reset crop</button>
+        <button id="clear-panel" type="button">Clear panel</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>2 · Caption</h2>
+      <label>Title
+        <input id="caption" type="text" maxlength="24" value="Neon Coast" autocomplete="off">
+      </label>
+      <label>Script subtitle
+        <input id="subtitle" type="text" maxlength="32" value="Vice City nights" autocomplete="off">
+      </label>
+      <label>Badge ribbon
+        <input id="badge" type="text" maxlength="16" value="Vice City" autocomplete="off">
+      </label>
+      <label>Heat meter
+        <select id="heat">
+          <option value="1">★ 1 — warming up</option>
+          <option value="2">★★ 2 — getting hot</option>
+          <option value="3">★★★ 3 — on the run</option>
+          <option value="4" selected>★★★★ 4 — most wanted</option>
+          <option value="5">★★★★★ 5 — five stars</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="group">
+      <h2>3 · Layout</h2>
+      <div class="picker" id="layout-picker" role="group" aria-label="Layout"></div>
+    </div>
+
+    <div class="group">
+      <h2>4 · Colour grade</h2>
+      <div class="picker" id="grade-picker" role="group" aria-label="Colour grade"></div>
+    </div>
+
+    <div class="group">
+      <h2>5 · Size &amp; effects</h2>
+      <div class="picker" id="size-picker" role="group" aria-label="Export size"></div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </div>
+
+    <div class="group">
+      <h2>History</h2>
+      <div class="row">
+        <button id="undo" type="button">Undo</button>
+        <button id="redo" type="button">Redo</button>
+      </div>
+    </div>
+
+    <div class="group export-group">
+      <h2>Export PNG</h2>
+      <button id="export-1080x1080" type="button" class="export-btn">Export 1080 × 1080</button>
+      <button id="export-1080x1350" type="button" class="export-btn">Export 1080 × 1350</button>
+      <button id="export-1920x1080" type="button" class="export-btn">Export 1920 × 1080</button>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1920" height="1080" aria-label="The cover preview"></canvas>
+    <p class="hint">Drag on the preview to pan the selected panel. Click a panel to select it.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
